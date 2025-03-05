@@ -3,29 +3,28 @@
 import { FilterForm } from "@/components/FilterForm";
 import RecipeList from "@/components/RecipeList";
 import { useRecipesList } from "@/store";
+import { IRecipe } from "@/types/recipe-list";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [categoryFilter, setCategoryFilter] = useState<string | undefined>(
     undefined
   );
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredMeals, setFilteredMeals] = useState<any[]>([]);
 
-  const { data, error, isLoading } = useRecipesList(searchTerm);
+  const [filteredMeals, setFilteredMeals] = useState<IRecipe[]>([]);
+
+  const { data, error, isLoading } = useRecipesList();
 
   useEffect(() => {
     if (data?.meals) {
-      // Фильтрация только если categoryFilter имеет данные
       const filtered = categoryFilter
         ? data.meals.filter((meal) =>
             meal.strCategory?.includes(categoryFilter)
           )
-        : data.meals; // Если фильтр пустой, показываем все рецепты
-
+        : data.meals;
       setFilteredMeals(filtered);
     }
-  }, [categoryFilter, data]); // Перезапускать эффект при изменении categoryFilter или data
+  }, [categoryFilter, data]);
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error loading recipes</p>;

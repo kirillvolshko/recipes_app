@@ -9,11 +9,11 @@ type RecipeListProps = {
 };
 
 const RecipeList = ({ data }: RecipeListProps) => {
+  const [currentPage, setCurrentPage] = useState(1);
   if (!data || !data.meals || data.meals.length === 0) {
     return <p>No recipes available.</p>;
   }
 
-  const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 10;
   const totalPages = Math.ceil(data.meals.length / recipesPerPage);
 

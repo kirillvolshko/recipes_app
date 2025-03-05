@@ -2,8 +2,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form } from "@/components/ui/form";
-import { Button } from "@/components/ui/button";
-import InputField from "@/components/common/fields/InputField";
 import { useEffect } from "react";
 import { categories } from "@/utils/categories";
 import SelectField from "./common/fields/SelectField";
