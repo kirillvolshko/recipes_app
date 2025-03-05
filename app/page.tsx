@@ -2,8 +2,10 @@
 
 import { FilterForm } from "@/components/FilterForm";
 import RecipeList from "@/components/RecipeList";
+import { Button } from "@/components/ui/button";
 import { useRecipesList } from "@/store";
 import { IRecipe } from "@/types/recipe-list";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -34,8 +36,14 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <FilterForm onCategoryFilterChange={handleCategoryFilterChange} />
+    <div className="relative">
+      <div className="flex justify-between">
+        <FilterForm onCategoryFilterChange={handleCategoryFilterChange} />
+        <Link href={"/favorite"}>
+          <Button className="hover:cursor-pointer">Favorite recipe</Button>
+        </Link>
+      </div>
+
       <RecipeList
         data={{
           meals: filteredMeals.length > 0 ? filteredMeals : data?.meals || [],

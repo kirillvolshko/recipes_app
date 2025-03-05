@@ -1,4 +1,4 @@
-import { transformRecipeData } from "@/utils/transformRecipeData ";
+import { transformRecipeData } from "@/utils/transformRecipeData";
 import { QueryFunctionContext } from "@tanstack/react-query";
 
 export const recipeInformationService = async ({

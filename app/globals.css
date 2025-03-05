@@ -124,3 +124,15 @@
     @apply bg-background text-foreground;
   }
 }
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
